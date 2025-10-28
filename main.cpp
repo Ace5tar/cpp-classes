@@ -90,7 +90,34 @@ void addMedia(vector<Media*>& mediaVect) {
 	}
 
 	if (strcmp(input, "MUSIC") ==0) {
-		//INIT MUSIC
+
+		cout << "Title:" << endl;
+		char title[80];
+		cin.ignore();
+		cin.getline(title, 80);
+
+		cout << "Artist:" << endl;
+		char artist[80];
+		cin.ignore();
+		cin.getline(artist, 80);
+
+		cout << "Year:" << endl;
+		int year;
+		cin >> year;
+
+		cout << "Duration:" << endl;
+		float duration;
+		cin >> duration;
+
+		cout << "Publisher:" << endl;
+		char publisher[80];
+		cin.ignore();
+		cin.getline(publisher, 80);
+		
+		Music* newMusic = new Music(title, artist, year, duration, publisher);
+
+		mediaVect.push_back(newMusic);
+
 		return;
 	}
 	cout << "Error: Invalid media type. Options are 'GAME', 'MOVIE', or 'MUSIC'." << endl;
