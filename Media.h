@@ -12,10 +12,10 @@ class Media {
 		Media(char* setTitle, int setYear);
 		int getYear();
 		char* getTitle();
+		~Media();
 	protected:
 		int year;
 		char* title;
-		~Media();
 };
 
 #endif
