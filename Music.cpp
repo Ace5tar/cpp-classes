@@ -29,3 +29,10 @@ float Music::getDuration() {
 char* Music::getPublisher() {
 	return publisher;
 }
+
+Music::~Music() {
+	delete[] artist;
+	delete[] publisher;
+	artist = nullptr;
+	publisher = nullptr;
+}

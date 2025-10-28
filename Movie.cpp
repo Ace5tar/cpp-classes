@@ -26,3 +26,8 @@ float Movie::getDuration() {
 float Movie::getRating() {
 	return rating;
 }
+
+Movie::~Movie() {
+	delete[] director;
+	director = nullptr;
+}

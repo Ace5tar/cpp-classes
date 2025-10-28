@@ -14,4 +14,5 @@ class Movie: public Media{
 		char* director;
 		float duration;
 		float rating;
+		~Movie();
 };

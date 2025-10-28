@@ -27,3 +27,7 @@ char* Media::getTitle() {
 	return title;
 
 }
+Media::~Media() {
+	delete[] title;
+	title = nullptr;
+}

@@ -14,5 +14,6 @@ class Music: public Media {
 		char* artist;
 		float duration;
 		char* publisher;
+		~Music();
 
 };

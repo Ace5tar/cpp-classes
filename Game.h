@@ -13,5 +13,6 @@ class Game: public Media {
 	protected:
 		char* publisher;
 		float rating;
+		~Game();
 
 };

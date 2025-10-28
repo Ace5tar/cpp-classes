@@ -24,3 +24,8 @@ char* Game::getPublisher() {
 float Game::getRating() {
 	return rating;
 }
+
+Game::~Game() {
+	delete[] publisher;
+	publisher = nullptr;
+}
