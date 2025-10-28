@@ -27,6 +27,14 @@ char* Media::getTitle() {
 	return title;
 
 }
+
+void Media::printDetails() {
+
+	cout << "WARNING: PRINTED PARENT MEDIA CLASS" << endl;
+	cout    << "Title: " << title << endl
+		<< "Year: " << year << endl;
+}
+
 Media::~Media() {
 	delete[] title;
 	title = nullptr;

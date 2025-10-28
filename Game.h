@@ -10,6 +10,7 @@ class Game: public Media {
 		Game(char* setTitle, int setYear, char* setPublisher, float setRating);
 		char* getPublisher();
 		float getRating();
+		void printDetails();
 		~Game();
 	protected:
 		char* publisher;

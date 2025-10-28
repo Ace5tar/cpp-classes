@@ -10,6 +10,7 @@ class Music: public Media {
 		char* getArtist();
 		float getDuration();
 		char* getPublisher();
+		void printDetails();
 		~Music();
 	protected:
 		char* artist;

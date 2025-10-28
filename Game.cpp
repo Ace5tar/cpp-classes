@@ -25,6 +25,14 @@ float Game::getRating() {
 	return rating;
 }
 
+void Game::printDetails() {
+
+	cout    << "Title: " << title << endl
+		<< "Year: " << year << endl
+		<< "Publisher: " << publisher << endl
+		<< "Rating: " << rating << endl;
+} 
+
 Game::~Game() {
 	delete[] publisher;
 	publisher = nullptr;

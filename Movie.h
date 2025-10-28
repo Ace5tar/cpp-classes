@@ -10,6 +10,7 @@ class Movie: public Media{
 		char* getDirector();
 		float getDuration();
 		float getRating();
+		void printDetails();
 		~Movie();
 	protected:
 		char* director;

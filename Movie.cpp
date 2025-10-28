@@ -27,6 +27,15 @@ float Movie::getRating() {
 	return rating;
 }
 
+void Movie::printDetails() {
+
+	cout    << "Title: " << title << endl
+		<< "Director: " << director << endl
+		<< "Year: " << year << endl
+		<< "Duration: " << duration << endl
+		<< "Rating: " << rating << endl;
+}
+
 Movie::~Movie() {
 	delete[] director;
 	director = nullptr;
