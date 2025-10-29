@@ -127,6 +127,15 @@ void addMedia(vector<Media*>& mediaVect) {
 
 }
 
+void searchMedia(vector<Media*>& mediaVect) {
+
+	for (Media* media : mediaVect) {
+		media->printDetails();
+	
+	}
+
+}
+
 int main() {
 
 	char input[80];
@@ -140,6 +149,7 @@ int main() {
 		cin >> input;
 		if (strcmp(input, "QUIT") == 0) running = false; 
 		if (strcmp(input, "ADD") == 0) addMedia(mediaVect); 
+		if (strcmp(input, "SEARCH") == 0) searchMedia(mediaVect);
 
 	}
 
