@@ -11,12 +11,11 @@ Music::Music():Media() {
 
 }
 
-Music::Music(char* setTitle, char* setArtist, int setYear, float setDuration, char* setPublisher): Media(setTitle, setYear) {
-	artist = setArtist;
-	duration = setDuration;
-	publisher = setPublisher;
-
-}
+Music::Music(char* setTitle, char* setArtist, int setYear, float setDuration, char* setPublisher): 
+	Media(setTitle, setYear), 
+	artist(setArtist),
+	duration(setDuration),
+	publisher(setPublisher) {}
 
 char* Music::getArtist() {
 	return artist;

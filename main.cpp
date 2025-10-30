@@ -1,6 +1,7 @@
 /*
  * https://stackoverflow.com/questions/17017563/char-array-with-cin-getline
  * https://stackoverflow.com/questions/120876/what-are-the-rules-for-calling-the-base-class-constructor
+ * https://stackoverflow.com/questions/120876/what-are-the-rules-for-calling-the-base-class-constructor
  */
 
 
@@ -25,7 +26,7 @@ void clearVars(vector<Media*>& mediaVect) {
 
 void addMedia(vector<Media*>& mediaVect) {
 
-	// Note: sometimes before cin.getline must used cin.ignore to clear buffer
+	// Note: sometimes before cin.getline must use cin.ignore to clear buffer
 
 	char input[80];
 	
@@ -168,6 +169,27 @@ void printMedia(vector<Media*>& mediaVect) {
 	}
 }
 
+void deleteMedia(vector<Media*>& mediaVect) {
+	char input;
+	int index = 0;
+
+	for (Media* media : searchMedia(mediaVect)) {
+		cout << "Are you sure you want to delete \"" << media->getTitle() << "\"? ('y', or 'n')" << endl;
+		cin >> input;
+		if (input == 'y') {
+			index = 0;
+			for (Media* mediaInMain : mediaVect) {
+				if (mediaInMain = media) {
+					delete mediaInMain;
+					mediaVect.erase(mediaVect.begin() + index);
+					++index;
+				}
+			}
+		}
+	}
+}
+
+
 int main() {
 
 	char input[80];
@@ -182,6 +204,7 @@ int main() {
 		if (strcmp(input, "QUIT") == 0) running = false; 
 		if (strcmp(input, "ADD") == 0) addMedia(mediaVect); 
 		if (strcmp(input, "SEARCH") == 0) printMedia(mediaVect);
+		if (strcmp(input, "DELETE") == 0) deleteMedia(mediaVect);
 
 	}
 
