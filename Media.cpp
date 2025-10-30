@@ -11,10 +11,9 @@ Media::Media() {
 
 }
 
-Media::Media(char* setTitle, int setYear) {
-	title = setTitle;
-	year = setYear;
-}
+Media::Media(char* setTitle, int setYear): 
+	title(setTitle), 
+	year(setYear){}
 
 int Media::getYear() {
 

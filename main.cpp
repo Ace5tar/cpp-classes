@@ -1,11 +1,13 @@
 /*
  * https://stackoverflow.com/questions/17017563/char-array-with-cin-getline
+ * https://stackoverflow.com/questions/120876/what-are-the-rules-for-calling-the-base-class-constructor
  */
 
 
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <cstdlib>
 #include "Media.h"
 #include "Game.h"
 #include "Movie.h"
@@ -23,7 +25,7 @@ void clearVars(vector<Media*>& mediaVect) {
 
 void addMedia(vector<Media*>& mediaVect) {
 
-	// Note: before cin.getline must used cin.ignore to clear buffer
+	// Note: sometimes before cin.getline must used cin.ignore to clear buffer
 
 	char input[80];
 	
@@ -33,7 +35,7 @@ void addMedia(vector<Media*>& mediaVect) {
 	if (strcmp(input, "GAME") == 0) {
 	
 		cout << "Title:" << endl;
-		char title[80];
+		char* title = new char[80];
 		cin.ignore();
 		cin.getline(title, 80);
 
@@ -42,7 +44,7 @@ void addMedia(vector<Media*>& mediaVect) {
 		cin >> year;
 
 		cout << "Publisher:" << endl;
-		char pub[80];
+		char* pub = new char[80];
 		cin.ignore();
 		cin.getline(pub, 80);
 
@@ -61,13 +63,12 @@ void addMedia(vector<Media*>& mediaVect) {
 	if (strcmp(input, "MOVIE") == 0) {
 
 		cout << "Title:" << endl;
-		char title[80];
+		char* title = new char[80];
 		cin.ignore();
 		cin.getline(title, 80);
 
 		cout << "Director:" << endl;
-		char director[80];
-		cin.ignore();
+		char* director = new char[80];
 		cin.getline(director, 80);
 
 		cout << "Year:" << endl;
@@ -92,13 +93,12 @@ void addMedia(vector<Media*>& mediaVect) {
 	if (strcmp(input, "MUSIC") ==0) {
 
 		cout << "Title:" << endl;
-		char title[80];
+		char* title = new char[80];
 		cin.ignore();
 		cin.getline(title, 80);
 
 		cout << "Artist:" << endl;
-		char artist[80];
-		cin.ignore();
+		char* artist = new char[80];
 		cin.getline(artist, 80);
 
 		cout << "Year:" << endl;
@@ -110,7 +110,7 @@ void addMedia(vector<Media*>& mediaVect) {
 		cin >> duration;
 
 		cout << "Publisher:" << endl;
-		char publisher[80];
+		char* publisher = new char[80];
 		cin.ignore();
 		cin.getline(publisher, 80);
 		
@@ -127,13 +127,45 @@ void addMedia(vector<Media*>& mediaVect) {
 
 }
 
-void searchMedia(vector<Media*>& mediaVect) {
+vector<Media*> searchMedia(vector<Media*>& mediaVect) {
 
-	for (Media* media : mediaVect) {
-		media->printDetails();
+	vector<Media*> foundMedia;
+	char input[80];
+
+	cout << "Would you like to search by 'YEAR' or 'TITLE'?" << endl;
+	cin >> input;
+
+	if (strcmp(input, "YEAR") == 0) {
+		cout << "Input year: ";
+		cin >> input;
+
+		for (Media* media: mediaVect) {
+			if (media->getYear() == atoi(input)) {
+				foundMedia.push_back(media);
+			}
+	 	}
+	} else if (strcmp(input, "TITLE") == 0) {
+		cout << "Input title: ";
+		cin >> input;
 	
-	}
+		for (Media* media : mediaVect) {
+			if (strcmp(media->getTitle(), input) == 0) {
+				foundMedia.push_back(media);
+			}
+		
+		}	
 
+	} else {
+		cout << "invalid choice" << endl;
+	}
+	if (foundMedia.size() == 0) cout << "No media found!" << endl;
+	return foundMedia;
+}
+
+void printMedia(vector<Media*>& mediaVect) {
+	for (Media* media : searchMedia(mediaVect)) {
+		media->printDetails();
+	}
 }
 
 int main() {
@@ -149,7 +181,7 @@ int main() {
 		cin >> input;
 		if (strcmp(input, "QUIT") == 0) running = false; 
 		if (strcmp(input, "ADD") == 0) addMedia(mediaVect); 
-		if (strcmp(input, "SEARCH") == 0) searchMedia(mediaVect);
+		if (strcmp(input, "SEARCH") == 0) printMedia(mediaVect);
 
 	}
 

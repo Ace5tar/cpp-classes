@@ -10,12 +10,10 @@ Game::Game():Media() {
 
 }
 
-Game::Game(char* setTitle, int setYear, char* setPublisher, float setRating):Media(title, year) {
-
-	publisher = setPublisher;
-	rating = setRating;
-
-}
+Game::Game(char* setTitle, int setYear, char* setPublisher, float setRating):
+	Media(setTitle, setYear),
+	publisher(setPublisher),
+	rating(setRating) {}
 
 char* Game::getPublisher() {
 	return publisher;
