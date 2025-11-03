@@ -1,3 +1,8 @@
+/*
+ * Belle Biery
+ * 11/3/25
+ * Header file for game class
+ */
 #include <iostream>
 #include "Media.h"
 
